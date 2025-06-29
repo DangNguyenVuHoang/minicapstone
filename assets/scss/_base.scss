@@ -1,0 +1,31 @@
+@use './variables';
+
+body {
+  font-family: variables.$font-family-base;
+  font-size: variables.$font-size-base;
+  background-color: variables.$light;
+  color: variables.$dark;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: variables.$primary;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+}

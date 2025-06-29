@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Trang Quản Trị - Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- Header -->
+    <div data-include="./components/header.html"></div>
+<script type="module" src="./js/main.js"></script>
+
+
+    <h1 class="mb-4 text-center text-primary">✍️ Quản Trị Sản Phẩm</h1>
+
+    <!-- Search + Sort -->
+    <div class="row mb-4 align-items-center">
+        <div class="col-md-6 mb-2 mb-md-0">
+            <input type="text" id="searchInput" class="form-control" placeholder="🔍 Tìm kiếm theo tên...">
+        </div>
+        <div class="col-md-3 mb-2 mb-md-0">
+            <select id="sortSelect" class="form-select">
+                <option value="">-- Sắp xếp theo giá --</option>
+                <option value="asc">⬆️ Giá tăng dần</option>
+                <option value="desc">⬇️ Giá giảm dần</option>
+            </select>
+        </div>
+        <div class="col-md-3 text-end">
+            <button id="addBtn" class="btn btn-success w-100 w-md-auto">+ Thêm sản phẩm</button>
+        </div>
+    </div>
+
+    <!-- Product Table -->
+    <div class="table-responsive mb-4">
+        <table class="table table-bordered table-hover align-middle text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>Tên</th>
+                    <th>Loại</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Hình</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="adminProductList">
+                <!-- JS Render -->
+            </tbody>
+        </table>
+    </div>
+
+    <nav aria-label="Phân trang sản phẩm">
+        <ul class="pagination justify-content-center mt-3" id="pagination">
+            <!-- JS sẽ render các nút phân trang tại đây -->
+        </ul>
+    </nav>
+
+    <!-- Modal: Thêm/Sửa sản phẩm -->
+    <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <form id="productForm">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="productModalLabel">Thêm sản phẩm</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="productId">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Tên</label>
+                                <input type="text" id="productName" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Loại</label>
+                                <input type="text" id="productType" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Giá</label>
+                                <input type="number" id="productPrice" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Số lượng</label>
+                                <input type="number" id="productQuantity" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Màn hình</label>
+                                <input type="text" id="productScreen" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Camera trước</label>
+                                <input type="text" id="productFrontCamera" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Camera sau</label>
+                                <input type="text" id="productBackCamera" class="form-control">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Mô tả</label>
+                                <textarea id="productDesc" class="form-control" rows="2"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Link hình ảnh <span style="color:  red;">(Link URL mới hiển thị được‼️)</span> </label>
+                                <input type="text" id="productImg" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">💾 Lưu</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">❌ Huỷ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script type="module">
+        import { authService } from "./js/services/authService.js";
+
+        const user = authService.getCurrentUser();
+        if (!user || user.role !== "admin") {
+            alert("⛔ Bạn không có quyền truy cập trang quản trị!");
+            window.location.href = "index.html"; // chuyển hướng về trang chính
+        }
+    </script>
+
+    </script>
+   
+    <script type="module" src="./js/controllers/AdminController.js"></script>
+    <script type="module" src="./js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đăng nhập</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+  </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+  <!-- Header -->
+  <div data-include="./components/header.html"></div>
+  <script type="module" src="./js/main.js"></script>
+
+  <!-- Đăng nhập -->
+  <main class="flex-grow-1 d-flex justify-content-center align-items-center">
+    <div class="card shadow p-4" style="width: 100%; max-width: 400px;">
+      <h2 class="text-center text-primary mb-4">🔐 Đăng nhập quản trị</h2>
+      <h3>Email: admin@example.com</h3>
+      <h3>Password: 123456</h3>
+      <form id="loginForm">
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Mật khẩu</label>
+          <input type="password" class="form-control" id="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <div data-include="./components/footer.html"></div>
+
+  <!-- Xử lý login -->
+  <script type="module">
+    import { authService } from "./js/services/authService.js";
+
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      try {
+        const user = await authService.login(email, password);
+        alert("✅ Đăng nhập thành công!");
+        window.location.href = user.role === "admin" ? "admin.html" : "index.html";
+      } catch (err) {
+        alert("❌ " + err.message);
+      }
+    });
+  </script>
+
+</body>
+</html>
