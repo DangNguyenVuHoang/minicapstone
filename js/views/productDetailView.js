@@ -24,7 +24,13 @@ export function renderProductDetail(product) {
         <p class="text-muted">${product.desc || "Không có mô tả."}</p>
 
         <h4 class="text-danger">${product.price.toLocaleString()}vnđ</h4>
-       
+        <button 
+                class="btn ${outOfStock ? 'btn-danger' : 'btn-warning'}"
+                ${outOfStock ? 'disabled' : ''}
+                onclick="${!outOfStock ? `addToCart(${product.id})` : ''}"
+              >
+                ${outOfStock ? 'Hết hàng' : 'Buy now'}
+              </button>
         ${outOfStock ? `<p class="text-danger fw-bold">Sản phẩm đã hết hàng</p>` : ""}
 
       </div>

@@ -57,7 +57,8 @@ button {
 .product-card img {
   width: 100%;
   height: 200px;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   margin-bottom: 1rem;
 }
 .product-card h5 {
@@ -82,7 +83,7 @@ button {
   border-color: #007bff;
 }
 .btn-primary:hover {
-  background-color: rgb(0, 98.4, 204);
+  background-color: #0062cc;
 }
 
 .product-grid {
@@ -98,4 +99,114 @@ footer {
   padding: 1rem 0;
 }
 
-/*# sourceMappingURL=style.css.map */
+header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+header .header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+header .header-container .logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: transform 0.3s ease, color 0.2s ease;
+}
+header .header-container .logo img {
+  width: 40px;
+  height: 40px;
+  margin-right: 0.5rem;
+  transition: transform 0.3s ease;
+}
+header .header-container .logo:hover {
+  transform: scale(1.05);
+  color: #007bff;
+}
+header .header-container .logo:hover img {
+  transform: rotate(10deg);
+}
+header .header-container nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+header .header-container nav ul li {
+  margin-left: 2rem;
+}
+header .header-container nav ul li a {
+  font-size: 1rem;
+  color: #343a40;
+  position: relative;
+  transition: color 0.2s ease;
+}
+header .header-container nav ul li a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #007bff;
+  transition: width 0.3s ease;
+}
+header .header-container nav ul li a:hover {
+  color: #007bff;
+}
+header .header-container nav ul li a:hover::after {
+  width: 100%;
+}
+header .header-container .cart {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #343a40;
+  transition: transform 0.3s ease;
+}
+header .header-container .cart img {
+  width: 24px;
+  height: 24px;
+  margin-right: 0.5rem;
+  transition: transform 0.3s ease;
+}
+header .header-container .cart span {
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+  transition: background-color 0.2s ease;
+}
+header .header-container .cart:hover {
+  transform: scale(1.1);
+}
+header .header-container .cart:hover img {
+  transform: rotate(5deg);
+}
+header .header-container .cart:hover span {
+  background-color: #0062cc;
+}
+@media (max-width: 768px) {
+  header .header-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  header .header-container nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  header .header-container nav ul li {
+    margin-left: 0;
+  }
+}/*# sourceMappingURL=style.css.map */

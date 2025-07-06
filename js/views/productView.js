@@ -9,7 +9,7 @@ export function renderProductList(products) {
 
     const html = `
       <div class="col-md-4 mb-4">
-        <div class="card h-100 shadow-sm ${outOfStock ? 'opacity-50' : ''}">
+        <div class="product-card card h-100 shadow-sm ${outOfStock ? 'opacity-50' : ''}">
           <img src="${product.img}" class="card-img-top" style="height: 250px; object-fit: contain">
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">${product.name}</h5>

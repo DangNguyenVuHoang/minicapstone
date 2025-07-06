@@ -3,56 +3,227 @@
 
 .product-card {
   background: white;
-  border: 1px solid #dee2e6;
-  border-radius: 12px;
-  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: variables.$border-radius-lg;
+  padding: 1.5rem;
   text-align: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: variables.$transition-base;
+  box-shadow: variables.$shadow-sm;
+  position: relative;
+  overflow: hidden;
 
   display: flex;
   flex-direction: column;
   height: 100%;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: variables.$gradient-primary;
+    opacity: 0;
+    transition: variables.$transition-base;
+  }
 
   img {
     width: 100%;
     height: 200px;
     object-fit: contain;
     margin-bottom: 1rem;
+    border-radius: variables.$border-radius;
+    transition: variables.$transition-base;
   }
 
   h5 {
     font-size: 1.1rem;
+    font-weight: variables.$font-weight-semibold;
     margin-bottom: 0.5rem;
+    color: variables.$dark;
   }
 
   p {
     flex-grow: 1;
-    font-size: 0.9rem;
-    color: #666;
+    font-size: variables.$font-size-sm;
+    color: variables.$secondary;
+    line-height: 1.5;
   }
 
   .btn {
     margin-top: auto;
+    border-radius: variables.$border-radius;
+    font-weight: variables.$font-weight-medium;
+    padding: 0.75rem 1.5rem;
+    transition: variables.$transition-base;
   }
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transform: translateY(-8px);
+    box-shadow: variables.$shadow-lg;
+    border-color: rgba(variables.$primary, 0.2);
+
+    &::before {
+      opacity: 1;
+    }
+
+    img {
+      transform: scale(1.05);
+    }
+  }
+
+  &.opacity-50 {
+    opacity: 0.6;
+
+    &:hover {
+      transform: none;
+      box-shadow: variables.$shadow-sm;
+    }
   }
 }
 
+// Enhanced buttons
 .btn-primary {
-  background-color: variables.$primary;
-  border-color: variables.$primary;
+  background: variables.$gradient-primary;
+  border: none;
+  color: white;
+  font-weight: variables.$font-weight-medium;
 
   &:hover {
-    background-color: color.adjust(variables.$primary, $lightness: -10%);
+    background: variables.$gradient-secondary;
+    transform: translateY(-2px);
+    box-shadow: variables.$shadow-md;
   }
 }
 
+.btn-warning {
+  background: linear-gradient(135deg, variables.$warning 0%, #ffb347 100%);
+  border: none;
+  color: variables.$dark;
+  font-weight: variables.$font-weight-medium;
+
+  &:hover {
+    background: linear-gradient(135deg, #ffb347 0%, variables.$warning 100%);
+    transform: translateY(-2px);
+    box-shadow: variables.$shadow-md;
+  }
+}
+
+.btn-outline-primary {
+  border: 2px solid variables.$primary;
+  color: variables.$primary;
+  background: transparent;
+
+  &:hover {
+    background: variables.$primary;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: variables.$shadow-md;
+  }
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, variables.$danger 0%, #ff6b6b 100%);
+  border: none;
+
+  &:hover {
+    background: linear-gradient(135deg, #ff6b6b 0%, variables.$danger 100%);
+    transform: translateY(-2px);
+    box-shadow: variables.$shadow-md;
+  }
+}
+
+.btn-success {
+  background: linear-gradient(135deg, variables.$success 0%, #51cf66 100%);
+  border: none;
+
+  &:hover {
+    background: linear-gradient(135deg, #51cf66 0%, variables.$success 100%);
+    transform: translateY(-2px);
+    box-shadow: variables.$shadow-md;
+  }
+}
+
+// Product grid
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+// Form enhancements
+.form-control {
+  border-radius: variables.$border-radius;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 0.75rem 1rem;
+  transition: variables.$transition-base;
+  font-size: variables.$font-size-base;
+
+  &:focus {
+    border-color: variables.$primary;
+    box-shadow: 0 0 0 0.2rem rgba(variables.$primary, 0.25);
+  }
+}
+
+.form-select {
+  border-radius: variables.$border-radius;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 0.75rem 1rem;
+  transition: variables.$transition-base;
+
+  &:focus {
+    border-color: variables.$primary;
+    box-shadow: 0 0 0 0.2rem rgba(variables.$primary, 0.25);
+  }
+}
+
+// Table enhancements
+.table {
+  border-radius: variables.$border-radius-lg;
+  overflow: hidden;
+  box-shadow: variables.$shadow-sm;
+
+  th {
+    background: variables.$gradient-primary;
+    color: white;
+    font-weight: variables.$font-weight-semibold;
+    border: none;
+    padding: 1rem;
+  }
+
+  td {
+    padding: 1rem;
+    vertical-align: middle;
+    border-color: rgba(0, 0, 0, 0.05);
+  }
+
+  tbody tr {
+    transition: variables.$transition-fast;
+
+    &:hover {
+      background-color: rgba(variables.$primary, 0.05);
+    }
+  }
+}
+
+// Modal enhancements
+.modal-content {
+  border-radius: variables.$border-radius-lg;
+  border: none;
+  box-shadow: variables.$shadow-xl;
+}
+
+.modal-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+
+  &.bg-dark {
+    background: variables.$gradient-primary !important;
+  }
+}
+
+.modal-body {
+  padding: 2rem;
 }

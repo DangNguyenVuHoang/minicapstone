@@ -8,17 +8,17 @@ const adminLinkContainer = document.getElementById("adminLinkContainer");
 if (authLinks && adminLinkContainer) {
   if (user) {
     if (user.role === "admin") {
-      adminLinkContainer.innerHTML = `<a href="admin.html" class="text-white me-3">Admin Page</a>`;
+      adminLinkContainer.innerHTML = `<a href="admin.html">Admin Page</a>`;
     }
 
     authLinks.innerHTML = `
       👤 ${user.name || user.email}
-      <a href="#" class="text-white ms-2" id="logoutLink">Logout</a>
+      <a href="#" class=" ms-2" id="logoutLink">Logout</a>
     `;
   } else {
     authLinks.innerHTML = `
-      <a href="login.html" class="text-white ms-2">Login</a> |
-      <a href="#" class="text-white ms-2">Register</a>
+      <a href="login.html" class=" ms-2">Login</a> |
+      <a href="#" class=" ms-2">Register</a>
     `;
   }
 
