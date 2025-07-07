@@ -46,7 +46,7 @@ export async function renderCart(cart) {
           <button onclick="changeQuantity(${item.id}, 1)" class="btn btn-sm btn-outline-secondary" ${item.quantity >= product.quantity ? 'disabled' : ''}>+</button>
         </td>
         <td>${product.price.toLocaleString()}vnđ</td>
-        <td>${itemTotal}$</td>
+        <td>${itemTotal.toLocaleString()}vnđ</td>
         <td>
           <button onclick="removeFromCart(${item.id})" class="btn btn-danger btn-sm">Xoá</button>
         </td>
@@ -55,7 +55,7 @@ export async function renderCart(cart) {
   }
 
   html += `</tbody></table>
-    <h5>Tổng tiền: ${total}$</h5>
+    <h5>Tổng tiền: ${total.toLocaleString()}vnđ</h5>
     <button onclick="clearCart()" class="btn btn-success">Thanh toán</button>`;
 
   container.innerHTML = html;
