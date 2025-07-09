@@ -29,6 +29,10 @@ document.getElementById("sortSelect").addEventListener("change", (e) => {
     sorted.sort((a, b) => a.price - b.price);
   } else if (direction === "desc") {
     sorted.sort((a, b) => b.price - a.price);
+  } else if (direction === "name-asc") {
+    sorted.sort((a, b) => a.name.localeCompare(b.name));
+  } else if (direction === "name-desc") {
+    sorted.sort((a, b) => b.name.localeCompare(a.name));
   }
   renderProductTable(sorted);
   renderPagination(sorted.length);
@@ -38,6 +42,18 @@ document.getElementById("sortSelect").addEventListener("change", (e) => {
 document.getElementById("searchInput").addEventListener("input", (e) => {
   const keyword = e.target.value.trim().toLowerCase();
   const filtered = allProducts.filter(p => p.name.toLowerCase().includes(keyword));
+  renderProductTable(filtered);
+  renderPagination(filtered.length);
+});
+// Lọc sản phẩm theo loại
+document.getElementById("filterTypeSelect").addEventListener("change", (e) => {
+  const selectedType = e.target.value;
+  let filtered = [...allProducts];
+
+  if (selectedType) {
+    filtered = filtered.filter(p => p.type.toLowerCase() === selectedType.toLowerCase());
+  }
+
   renderProductTable(filtered);
   renderPagination(filtered.length);
 });

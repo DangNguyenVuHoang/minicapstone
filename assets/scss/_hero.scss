@@ -1,0 +1,75 @@
+@use './variables';
+@use './layout';
+@use 'sass:color';
+.hero-section {
+    background: variables.$gradient-primary;
+    padding: 4rem 0;
+    color: white;
+
+    .carousel-item {
+        padding: 3rem 0;
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+
+            @media (max-width: 768px) {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        .hero-text {
+            flex: 1;
+
+            h2 {
+                font-size: 3rem;
+                font-weight: variables.$font-weight-bold;
+                margin-bottom: 1rem;
+
+                @media (max-width: 768px) {
+                    font-size: 2rem;
+                }
+            }
+
+            p {
+                font-size: variables.$font-size-lg;
+                margin-bottom: 2rem;
+                opacity: 0.9;
+            }
+
+            .btn {
+                padding: 1rem 2rem;
+                font-size: variables.$font-size-lg;
+                font-weight: variables.$font-weight-semibold;
+                border-radius: variables.$border-radius-lg;
+                background: white;
+                color: variables.$primary;
+                border: none;
+                transition: variables.$transition-base;
+
+                &:hover {
+                    transform: translateY(-3px);
+                    box-shadow: variables.$shadow-lg;
+                }
+            }
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+
+            img {
+                max-width: 400px;
+                border-radius: variables.$border-radius-lg;
+                box-shadow: variables.$shadow-lg;
+                transition: variables.$transition-base;
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+            }
+        }
+    }
+}

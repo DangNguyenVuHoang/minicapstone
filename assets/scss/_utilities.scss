@@ -1,0 +1,73 @@
+@use './variables';
+@use './layout';
+@use 'sass:color';
+// Spacing utilities
+.mb-6 {
+    margin-bottom: 4rem;
+}
+
+.mt-6 {
+    margin-top: 4rem;
+}
+
+.py-6 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+// Flexbox utilities
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+// Text utilities
+.text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+// Background utilities
+.bg-gradient-primary {
+    background: variables.$gradient-primary;
+}
+
+.bg-gradient-secondary {
+    background: variables.$gradient-secondary;
+}
+
+// Border utilities
+.border-gradient {
+    border: 2px solid transparent;
+    background: linear-gradient(white, white) padding-box,
+        variables.$gradient-primary border-box;
+}
+
+// Hover effects
+.hover-lift {
+    transition: variables.$transition-base;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: variables.$shadow-lg;
+    }
+}
+
+.hover-glow {
+    transition: variables.$transition-base;
+
+    &:hover {
+        box-shadow: 0 0 20px rgba(variables.$primary, 0.3);
+    }
+}

@@ -1,22 +1,68 @@
 @use './variables';
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   font-family: variables.$font-family-base;
   font-size: variables.$font-size-base;
-  background-color: variables.$light;
-  color: variables.$dark;
+  font-weight: variables.$font-weight-normal;
   line-height: 1.6;
+  color: variables.$dark;
+  background-color: variables.$light;
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: variables.$font-family-heading;
+  font-weight: variables.$font-weight-semibold;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1rem;
 }
 
 a {
   text-decoration: none;
   color: inherit;
-  transition: color 0.2s ease;
+  transition: variables.$transition-base;
 
   &:hover {
     color: variables.$primary;
+    text-decoration: none;
   }
 }
 
@@ -28,4 +74,23 @@ img {
 
 button {
   font-family: inherit;
+  border: none;
+  cursor: pointer;
+  transition: variables.$transition-base;
+}
+
+// Utility classes
+.text-gradient {
+  background: variables.$gradient-primary;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.shadow-soft {
+  box-shadow: variables.$shadow-md;
+}
+
+.border-radius-custom {
+  border-radius: variables.$border-radius-lg;
 }

@@ -27,16 +27,28 @@
         </div>
         <div class="col-md-3 mb-2 mb-md-0">
             <select id="sortSelect" class="form-select">
-                <option value="">-- Sắp xếp theo giá --</option>
+                <option value="">-- Sắp xếp --</option>
                 <option value="asc">⬆️ Giá tăng dần</option>
                 <option value="desc">⬇️ Giá giảm dần</option>
+                <option value="name-asc">Tên A-Z</option>
+                <option value="name-desc">Tên Z-A</option>
             </select>
         </div>
         <div class="col-md-3 text-end">
             <button id="addBtn" class="btn btn-success w-100 w-md-auto">+ Thêm sản phẩm</button>
         </div>
     </div>
-
+    <!-- Filter -->
+    <div class="row mb-3">
+        <div class="col-md-4">
+          <select id="filterTypeSelect" class="form-select">
+            <option value="">Tất cả loại</option>
+            <option value="iphone">iPhone</option>
+            <option value="samsung">Samsung</option>
+          </select>
+        </div>
+      </div>
+      
     <!-- Product Table -->
     <div class="table-responsive mb-4">
         <table class="table table-bordered table-hover align-middle text-center">
