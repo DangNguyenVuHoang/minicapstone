@@ -1,5 +1,7 @@
 //  Đường dẫn API chung
-const BASE_API = 'https://685166518612b47a2c09e711.mockapi.io';
+// const BASE_API = 'https://685166518612b47a2c09e711.mockapi.io';
+
+const BASE_API = 'https://685fb6d7c55df675589f0d9c.mockapi.io';
 
 //  Đường dẫn sản phẩm
 const PRODUCT_API = `${BASE_API}/products`;
